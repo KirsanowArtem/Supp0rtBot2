@@ -1,0 +1,418 @@
+2025-05-25 22:36:06,551 - root - ERROR - Критична помилка при експорті: cannot reindex on an axis with duplicate labels
+Traceback (most recent call last):
+  File "D:\Programming\Python\Supp0rtBot\TgBot3.py", line 253, in export_to_excel
+    users_df = all_users_df[all_users_df["mute/ban"] == False].copy()
+               ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Programming\Python\Supp0rtBot\.venv\Lib\site-packages\pandas\core\frame.py", line 4089, in __getitem__
+    return self.where(key)
+           ^^^^^^^^^^^^^^^
+  File "D:\Programming\Python\Supp0rtBot\.venv\Lib\site-packages\pandas\core\generic.py", line 10984, in where
+    return self._where(cond, other, inplace, axis, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Programming\Python\Supp0rtBot\.venv\Lib\site-packages\pandas\core\generic.py", line 10685, in _where
+    cond = cond.reindex(self._info_axis, axis=self._info_axis_number, copy=False)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Programming\Python\Supp0rtBot\.venv\Lib\site-packages\pandas\core\frame.py", line 5378, in reindex
+    return super().reindex(
+           ^^^^^^^^^^^^^^^^
+  File "D:\Programming\Python\Supp0rtBot\.venv\Lib\site-packages\pandas\core\generic.py", line 5610, in reindex
+    return self._reindex_axes(
+           ^^^^^^^^^^^^^^^^^^^
+  File "D:\Programming\Python\Supp0rtBot\.venv\Lib\site-packages\pandas\core\generic.py", line 5633, in _reindex_axes
+    new_index, indexer = ax.reindex(
+                         ^^^^^^^^^^^
+  File "D:\Programming\Python\Supp0rtBot\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 4429, in reindex
+    raise ValueError("cannot reindex on an axis with duplicate labels")
+ValueError: cannot reindex on an axis with duplicate labels
+2025-07-03 18:55:18,290 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.31.105:5000
+2025-07-03 18:55:18,292 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-07-03 18:55:18,309 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.31.105:5000
+2025-07-03 18:55:18,310 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-07-03 18:55:24,643 - telegram.ext.Application - ERROR - No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "D:\Programming\Python\Supp0rtBot\.venv\Lib\site-packages\telegram\ext\_updater.py", line 750, in _network_loop_retry
+    if not await do_action():
+           ^^^^^^^^^^^^^^^^^
+  File "D:\Programming\Python\Supp0rtBot\.venv\Lib\site-packages\telegram\ext\_updater.py", line 744, in do_action
+    return action_cb_task.result()
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\38066\AppData\Local\Programs\Python\Python312\Lib\asyncio\futures.py", line 203, in result
+    raise self._exception.with_traceback(self._exception_tb)
+  File "C:\Users\38066\AppData\Local\Programs\Python\Python312\Lib\asyncio\tasks.py", line 314, in __step_run_and_handle_result
+    result = coro.send(None)
+             ^^^^^^^^^^^^^^^
+  File "D:\Programming\Python\Supp0rtBot\.venv\Lib\site-packages\telegram\ext\_updater.py", line 371, in polling_action_cb
+    updates = await self.bot.get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Programming\Python\Supp0rtBot\.venv\Lib\site-packages\telegram\ext\_extbot.py", line 650, in get_updates
+    updates = await super().get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Programming\Python\Supp0rtBot\.venv\Lib\site-packages\telegram\_bot.py", line 4480, in get_updates
+    await self._post(
+  File "D:\Programming\Python\Supp0rtBot\.venv\Lib\site-packages\telegram\_bot.py", line 619, in _post
+    return await self._do_post(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "D:\Programming\Python\Supp0rtBot\.venv\Lib\site-packages\telegram\ext\_extbot.py", line 354, in _do_post
+    return await super()._do_post(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Programming\Python\Supp0rtBot\.venv\Lib\site-packages\telegram\_bot.py", line 648, in _do_post
+    result = await request.post(
+             ^^^^^^^^^^^^^^^^^^^
+  File "D:\Programming\Python\Supp0rtBot\.venv\Lib\site-packages\telegram\request\_baserequest.py", line 202, in post
+    result = await self._request_wrapper(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Programming\Python\Supp0rtBot\.venv\Lib\site-packages\telegram\request\_baserequest.py", line 385, in _request_wrapper
+    raise Conflict(message)
+telegram.error.Conflict: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-07-03 18:55:28,704 - telegram.ext.Application - ERROR - No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "D:\Programming\Python\Supp0rtBot\.venv\Lib\site-packages\telegram\ext\_updater.py", line 750, in _network_loop_retry
+    if not await do_action():
+           ^^^^^^^^^^^^^^^^^
+  File "D:\Programming\Python\Supp0rtBot\.venv\Lib\site-packages\telegram\ext\_updater.py", line 744, in do_action
+    return action_cb_task.result()
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\38066\AppData\Local\Programs\Python\Python312\Lib\asyncio\futures.py", line 203, in result
+    raise self._exception.with_traceback(self._exception_tb)
+  File "C:\Users\38066\AppData\Local\Programs\Python\Python312\Lib\asyncio\tasks.py", line 314, in __step_run_and_handle_result
+    result = coro.send(None)
+             ^^^^^^^^^^^^^^^
+  File "D:\Programming\Python\Supp0rtBot\.venv\Lib\site-packages\telegram\ext\_updater.py", line 371, in polling_action_cb
+    updates = await self.bot.get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Programming\Python\Supp0rtBot\.venv\Lib\site-packages\telegram\ext\_extbot.py", line 650, in get_updates
+    updates = await super().get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Programming\Python\Supp0rtBot\.venv\Lib\site-packages\telegram\_bot.py", line 4480, in get_updates
+    await self._post(
+  File "D:\Programming\Python\Supp0rtBot\.venv\Lib\site-packages\telegram\_bot.py", line 619, in _post
+    return await self._do_post(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "D:\Programming\Python\Supp0rtBot\.venv\Lib\site-packages\telegram\ext\_extbot.py", line 354, in _do_post
+    return await super()._do_post(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Programming\Python\Supp0rtBot\.venv\Lib\site-packages\telegram\_bot.py", line 648, in _do_post
+    result = await request.post(
+             ^^^^^^^^^^^^^^^^^^^
+  File "D:\Programming\Python\Supp0rtBot\.venv\Lib\site-packages\telegram\request\_baserequest.py", line 202, in post
+    result = await self._request_wrapper(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Programming\Python\Supp0rtBot\.venv\Lib\site-packages\telegram\request\_baserequest.py", line 385, in _request_wrapper
+    raise Conflict(message)
+telegram.error.Conflict: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-07-03 18:55:29,761 - telegram.ext.Application - ERROR - No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "D:\Programming\Python\Supp0rtBot\.venv\Lib\site-packages\telegram\ext\_updater.py", line 750, in _network_loop_retry
+    if not await do_action():
+           ^^^^^^^^^^^^^^^^^
+  File "D:\Programming\Python\Supp0rtBot\.venv\Lib\site-packages\telegram\ext\_updater.py", line 744, in do_action
+    return action_cb_task.result()
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\38066\AppData\Local\Programs\Python\Python312\Lib\asyncio\futures.py", line 203, in result
+    raise self._exception.with_traceback(self._exception_tb)
+  File "C:\Users\38066\AppData\Local\Programs\Python\Python312\Lib\asyncio\tasks.py", line 314, in __step_run_and_handle_result
+    result = coro.send(None)
+             ^^^^^^^^^^^^^^^
+  File "D:\Programming\Python\Supp0rtBot\.venv\Lib\site-packages\telegram\ext\_updater.py", line 371, in polling_action_cb
+    updates = await self.bot.get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Programming\Python\Supp0rtBot\.venv\Lib\site-packages\telegram\ext\_extbot.py", line 650, in get_updates
+    updates = await super().get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Programming\Python\Supp0rtBot\.venv\Lib\site-packages\telegram\_bot.py", line 4480, in get_updates
+    await self._post(
+  File "D:\Programming\Python\Supp0rtBot\.venv\Lib\site-packages\telegram\_bot.py", line 619, in _post
+    return await self._do_post(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "D:\Programming\Python\Supp0rtBot\.venv\Lib\site-packages\telegram\ext\_extbot.py", line 354, in _do_post
+    return await super()._do_post(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Programming\Python\Supp0rtBot\.venv\Lib\site-packages\telegram\_bot.py", line 648, in _do_post
+    result = await request.post(
+             ^^^^^^^^^^^^^^^^^^^
+  File "D:\Programming\Python\Supp0rtBot\.venv\Lib\site-packages\telegram\request\_baserequest.py", line 202, in post
+    result = await self._request_wrapper(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Programming\Python\Supp0rtBot\.venv\Lib\site-packages\telegram\request\_baserequest.py", line 385, in _request_wrapper
+    raise Conflict(message)
+telegram.error.Conflict: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-07-03 18:55:34,315 - telegram.ext.Application - ERROR - No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "D:\Programming\Python\Supp0rtBot\.venv\Lib\site-packages\telegram\ext\_updater.py", line 750, in _network_loop_retry
+    if not await do_action():
+           ^^^^^^^^^^^^^^^^^
+  File "D:\Programming\Python\Supp0rtBot\.venv\Lib\site-packages\telegram\ext\_updater.py", line 744, in do_action
+    return action_cb_task.result()
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\38066\AppData\Local\Programs\Python\Python312\Lib\asyncio\futures.py", line 203, in result
+    raise self._exception.with_traceback(self._exception_tb)
+  File "C:\Users\38066\AppData\Local\Programs\Python\Python312\Lib\asyncio\tasks.py", line 314, in __step_run_and_handle_result
+    result = coro.send(None)
+             ^^^^^^^^^^^^^^^
+  File "D:\Programming\Python\Supp0rtBot\.venv\Lib\site-packages\telegram\ext\_updater.py", line 371, in polling_action_cb
+    updates = await self.bot.get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Programming\Python\Supp0rtBot\.venv\Lib\site-packages\telegram\ext\_extbot.py", line 650, in get_updates
+    updates = await super().get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Programming\Python\Supp0rtBot\.venv\Lib\site-packages\telegram\_bot.py", line 4480, in get_updates
+    await self._post(
+  File "D:\Programming\Python\Supp0rtBot\.venv\Lib\site-packages\telegram\_bot.py", line 619, in _post
+    return await self._do_post(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "D:\Programming\Python\Supp0rtBot\.venv\Lib\site-packages\telegram\ext\_extbot.py", line 354, in _do_post
+    return await super()._do_post(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Programming\Python\Supp0rtBot\.venv\Lib\site-packages\telegram\_bot.py", line 648, in _do_post
+    result = await request.post(
+             ^^^^^^^^^^^^^^^^^^^
+  File "D:\Programming\Python\Supp0rtBot\.venv\Lib\site-packages\telegram\request\_baserequest.py", line 202, in post
+    result = await self._request_wrapper(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Programming\Python\Supp0rtBot\.venv\Lib\site-packages\telegram\request\_baserequest.py", line 385, in _request_wrapper
+    raise Conflict(message)
+telegram.error.Conflict: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-07-03 18:55:35,882 - telegram.ext.Application - ERROR - No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "D:\Programming\Python\Supp0rtBot\.venv\Lib\site-packages\telegram\ext\_updater.py", line 750, in _network_loop_retry
+    if not await do_action():
+           ^^^^^^^^^^^^^^^^^
+  File "D:\Programming\Python\Supp0rtBot\.venv\Lib\site-packages\telegram\ext\_updater.py", line 744, in do_action
+    return action_cb_task.result()
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\38066\AppData\Local\Programs\Python\Python312\Lib\asyncio\futures.py", line 203, in result
+    raise self._exception.with_traceback(self._exception_tb)
+  File "C:\Users\38066\AppData\Local\Programs\Python\Python312\Lib\asyncio\tasks.py", line 314, in __step_run_and_handle_result
+    result = coro.send(None)
+             ^^^^^^^^^^^^^^^
+  File "D:\Programming\Python\Supp0rtBot\.venv\Lib\site-packages\telegram\ext\_updater.py", line 371, in polling_action_cb
+    updates = await self.bot.get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Programming\Python\Supp0rtBot\.venv\Lib\site-packages\telegram\ext\_extbot.py", line 650, in get_updates
+    updates = await super().get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Programming\Python\Supp0rtBot\.venv\Lib\site-packages\telegram\_bot.py", line 4480, in get_updates
+    await self._post(
+  File "D:\Programming\Python\Supp0rtBot\.venv\Lib\site-packages\telegram\_bot.py", line 619, in _post
+    return await self._do_post(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "D:\Programming\Python\Supp0rtBot\.venv\Lib\site-packages\telegram\ext\_extbot.py", line 354, in _do_post
+    return await super()._do_post(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Programming\Python\Supp0rtBot\.venv\Lib\site-packages\telegram\_bot.py", line 648, in _do_post
+    result = await request.post(
+             ^^^^^^^^^^^^^^^^^^^
+  File "D:\Programming\Python\Supp0rtBot\.venv\Lib\site-packages\telegram\request\_baserequest.py", line 202, in post
+    result = await self._request_wrapper(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Programming\Python\Supp0rtBot\.venv\Lib\site-packages\telegram\request\_baserequest.py", line 385, in _request_wrapper
+    raise Conflict(message)
+telegram.error.Conflict: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-07-03 18:55:41,224 - telegram.ext.Application - ERROR - No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "D:\Programming\Python\Supp0rtBot\.venv\Lib\site-packages\telegram\ext\_updater.py", line 750, in _network_loop_retry
+    if not await do_action():
+           ^^^^^^^^^^^^^^^^^
+  File "D:\Programming\Python\Supp0rtBot\.venv\Lib\site-packages\telegram\ext\_updater.py", line 744, in do_action
+    return action_cb_task.result()
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\38066\AppData\Local\Programs\Python\Python312\Lib\asyncio\futures.py", line 203, in result
+    raise self._exception.with_traceback(self._exception_tb)
+  File "C:\Users\38066\AppData\Local\Programs\Python\Python312\Lib\asyncio\tasks.py", line 314, in __step_run_and_handle_result
+    result = coro.send(None)
+             ^^^^^^^^^^^^^^^
+  File "D:\Programming\Python\Supp0rtBot\.venv\Lib\site-packages\telegram\ext\_updater.py", line 371, in polling_action_cb
+    updates = await self.bot.get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Programming\Python\Supp0rtBot\.venv\Lib\site-packages\telegram\ext\_extbot.py", line 650, in get_updates
+    updates = await super().get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Programming\Python\Supp0rtBot\.venv\Lib\site-packages\telegram\_bot.py", line 4480, in get_updates
+    await self._post(
+  File "D:\Programming\Python\Supp0rtBot\.venv\Lib\site-packages\telegram\_bot.py", line 619, in _post
+    return await self._do_post(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "D:\Programming\Python\Supp0rtBot\.venv\Lib\site-packages\telegram\ext\_extbot.py", line 354, in _do_post
+    return await super()._do_post(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Programming\Python\Supp0rtBot\.venv\Lib\site-packages\telegram\_bot.py", line 648, in _do_post
+    result = await request.post(
+             ^^^^^^^^^^^^^^^^^^^
+  File "D:\Programming\Python\Supp0rtBot\.venv\Lib\site-packages\telegram\request\_baserequest.py", line 202, in post
+    result = await self._request_wrapper(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Programming\Python\Supp0rtBot\.venv\Lib\site-packages\telegram\request\_baserequest.py", line 385, in _request_wrapper
+    raise Conflict(message)
+telegram.error.Conflict: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-07-03 18:55:43,534 - telegram.ext.Application - ERROR - No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "D:\Programming\Python\Supp0rtBot\.venv\Lib\site-packages\telegram\ext\_updater.py", line 750, in _network_loop_retry
+    if not await do_action():
+           ^^^^^^^^^^^^^^^^^
+  File "D:\Programming\Python\Supp0rtBot\.venv\Lib\site-packages\telegram\ext\_updater.py", line 744, in do_action
+    return action_cb_task.result()
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\38066\AppData\Local\Programs\Python\Python312\Lib\asyncio\futures.py", line 203, in result
+    raise self._exception.with_traceback(self._exception_tb)
+  File "C:\Users\38066\AppData\Local\Programs\Python\Python312\Lib\asyncio\tasks.py", line 314, in __step_run_and_handle_result
+    result = coro.send(None)
+             ^^^^^^^^^^^^^^^
+  File "D:\Programming\Python\Supp0rtBot\.venv\Lib\site-packages\telegram\ext\_updater.py", line 371, in polling_action_cb
+    updates = await self.bot.get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Programming\Python\Supp0rtBot\.venv\Lib\site-packages\telegram\ext\_extbot.py", line 650, in get_updates
+    updates = await super().get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Programming\Python\Supp0rtBot\.venv\Lib\site-packages\telegram\_bot.py", line 4480, in get_updates
+    await self._post(
+  File "D:\Programming\Python\Supp0rtBot\.venv\Lib\site-packages\telegram\_bot.py", line 619, in _post
+    return await self._do_post(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "D:\Programming\Python\Supp0rtBot\.venv\Lib\site-packages\telegram\ext\_extbot.py", line 354, in _do_post
+    return await super()._do_post(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Programming\Python\Supp0rtBot\.venv\Lib\site-packages\telegram\_bot.py", line 648, in _do_post
+    result = await request.post(
+             ^^^^^^^^^^^^^^^^^^^
+  File "D:\Programming\Python\Supp0rtBot\.venv\Lib\site-packages\telegram\request\_baserequest.py", line 202, in post
+    result = await self._request_wrapper(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Programming\Python\Supp0rtBot\.venv\Lib\site-packages\telegram\request\_baserequest.py", line 385, in _request_wrapper
+    raise Conflict(message)
+telegram.error.Conflict: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-07-03 20:31:41,120 - telegram.ext.Updater - ERROR - Error while calling `get_updates` one more time to mark all fetched updates as read: %s. Suppressing error to ensure graceful shutdown. When polling for updates is restarted, updates may be fetched again. Please adjust timeouts via `ApplicationBuilder` or the parameter `get_updates_request` of `Bot`.
+Traceback (most recent call last):
+  File "D:\Programming\Python\Supp0rtBot\.venv\Lib\site-packages\httpx\_transports\default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "D:\Programming\Python\Supp0rtBot\.venv\Lib\site-packages\httpx\_transports\default.py", line 394, in handle_async_request
+    resp = await self._pool.handle_async_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Programming\Python\Supp0rtBot\.venv\Lib\site-packages\httpcore\_async\connection_pool.py", line 256, in handle_async_request
+    raise exc from None
+  File "D:\Programming\Python\Supp0rtBot\.venv\Lib\site-packages\httpcore\_async\connection_pool.py", line 236, in handle_async_request
+    response = await connection.handle_async_request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Programming\Python\Supp0rtBot\.venv\Lib\site-packages\httpcore\_async\connection.py", line 101, in handle_async_request
+    raise exc
+  File "D:\Programming\Python\Supp0rtBot\.venv\Lib\site-packages\httpcore\_async\connection.py", line 78, in handle_async_request
+    stream = await self._connect(request)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Programming\Python\Supp0rtBot\.venv\Lib\site-packages\httpcore\_async\connection.py", line 124, in _connect
+    stream = await self._network_backend.connect_tcp(**kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Programming\Python\Supp0rtBot\.venv\Lib\site-packages\httpcore\_backends\auto.py", line 31, in connect_tcp
+    return await self._backend.connect_tcp(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Programming\Python\Supp0rtBot\.venv\Lib\site-packages\httpcore\_backends\anyio.py", line 113, in connect_tcp
+    with map_exceptions(exc_map):
+  File "C:\Users\38066\AppData\Local\Programs\Python\Python312\Lib\contextlib.py", line 158, in __exit__
+    self.gen.throw(value)
+  File "D:\Programming\Python\Supp0rtBot\.venv\Lib\site-packages\httpcore\_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectTimeout
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\Programming\Python\Supp0rtBot\.venv\Lib\site-packages\telegram\request\_httpxrequest.py", line 293, in do_request
+    res = await self._client.request(
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Programming\Python\Supp0rtBot\.venv\Lib\site-packages\httpx\_client.py", line 1540, in request
+    return await self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Programming\Python\Supp0rtBot\.venv\Lib\site-packages\httpx\_client.py", line 1629, in send
+    response = await self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Programming\Python\Supp0rtBot\.venv\Lib\site-packages\httpx\_client.py", line 1657, in _send_handling_auth
+    response = await self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Programming\Python\Supp0rtBot\.venv\Lib\site-packages\httpx\_client.py", line 1694, in _send_handling_redirects
+    response = await self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Programming\Python\Supp0rtBot\.venv\Lib\site-packages\httpx\_client.py", line 1730, in _send_single_request
+    response = await transport.handle_async_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Programming\Python\Supp0rtBot\.venv\Lib\site-packages\httpx\_transports\default.py", line 393, in handle_async_request
+    with map_httpcore_exceptions():
+  File "C:\Users\38066\AppData\Local\Programs\Python\Python312\Lib\contextlib.py", line 158, in __exit__
+    self.gen.throw(value)
+  File "D:\Programming\Python\Supp0rtBot\.venv\Lib\site-packages\httpx\_transports\default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectTimeout
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\Programming\Python\Supp0rtBot\.venv\Lib\site-packages\telegram\ext\_updater.py", line 432, in _get_updates_cleanup
+    await self.bot.get_updates(
+  File "D:\Programming\Python\Supp0rtBot\.venv\Lib\site-packages\telegram\ext\_extbot.py", line 650, in get_updates
+    updates = await super().get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Programming\Python\Supp0rtBot\.venv\Lib\site-packages\telegram\_bot.py", line 4480, in get_updates
+    await self._post(
+  File "D:\Programming\Python\Supp0rtBot\.venv\Lib\site-packages\telegram\_bot.py", line 619, in _post
+    return await self._do_post(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "D:\Programming\Python\Supp0rtBot\.venv\Lib\site-packages\telegram\ext\_extbot.py", line 354, in _do_post
+    return await super()._do_post(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Programming\Python\Supp0rtBot\.venv\Lib\site-packages\telegram\_bot.py", line 648, in _do_post
+    result = await request.post(
+             ^^^^^^^^^^^^^^^^^^^
+  File "D:\Programming\Python\Supp0rtBot\.venv\Lib\site-packages\telegram\request\_baserequest.py", line 202, in post
+    result = await self._request_wrapper(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Programming\Python\Supp0rtBot\.venv\Lib\site-packages\telegram\request\_baserequest.py", line 334, in _request_wrapper
+    code, payload = await self.do_request(
+                    ^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Programming\Python\Supp0rtBot\.venv\Lib\site-packages\telegram\request\_httpxrequest.py", line 310, in do_request
+    raise TimedOut from err
+telegram.error.TimedOut: Timed out
+2025-07-03 20:36:18,096 - werkzeug - INFO - 127.0.0.1 - - [03/Jul/2025 20:36:18] "GET / HTTP/1.1" 200 -
+2025-07-03 20:36:21,596 - werkzeug - INFO - 127.0.0.1 - - [03/Jul/2025 20:36:21] "GET / HTTP/1.1" 200 -
+2025-07-03 20:37:15,063 - werkzeug - INFO - 127.0.0.1 - - [03/Jul/2025 20:37:15] "GET / HTTP/1.1" 200 -
+2025-07-03 20:37:17,343 - werkzeug - INFO - 127.0.0.1 - - [03/Jul/2025 20:37:17] "GET / HTTP/1.1" 200 -
+2025-07-03 20:37:26,130 - werkzeug - INFO - 192.168.31.105 - - [03/Jul/2025 20:37:26] "GET / HTTP/1.1" 200 -
+2025-07-03 20:37:27,079 - werkzeug - INFO - 192.168.31.105 - - [03/Jul/2025 20:37:27] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-07-03 20:39:16,322 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.31.105:5000
+2025-07-03 20:39:16,323 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-07-03 20:41:37,324 - werkzeug - INFO - 127.0.0.1 - - [03/Jul/2025 20:41:37] "GET / HTTP/1.1" 200 -
+2025-07-03 20:42:19,560 - werkzeug - INFO - 127.0.0.1 - - [03/Jul/2025 20:42:19] "GET / HTTP/1.1" 200 -
+2025-07-03 20:42:20,662 - werkzeug - INFO - 127.0.0.1 - - [03/Jul/2025 20:42:20] "GET / HTTP/1.1" 200 -
+2025-07-03 20:43:56,096 - werkzeug - INFO - 127.0.0.1 - - [03/Jul/2025 20:43:56] "GET / HTTP/1.1" 200 -
+2025-07-03 20:45:44,640 - werkzeug - INFO - 127.0.0.1 - - [03/Jul/2025 20:45:44] "GET / HTTP/1.1" 200 -
+2025-07-03 20:49:07,224 - werkzeug - INFO - 127.0.0.1 - - [03/Jul/2025 20:49:07] "GET / HTTP/1.1" 200 -
+2025-07-03 20:49:31,072 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.31.105:5000
+2025-07-03 20:49:31,073 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-07-03 20:50:21,861 - werkzeug - INFO - 192.168.31.105 - - [03/Jul/2025 20:50:21] "GET / HTTP/1.1" 200 -
+2025-07-03 20:56:51,310 - werkzeug - INFO - 192.168.31.105 - - [03/Jul/2025 20:56:51] "GET / HTTP/1.1" 200 -
+2025-07-03 20:57:12,967 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.31.105:5000
+2025-07-03 20:57:12,968 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-07-03 20:57:26,087 - werkzeug - INFO - 192.168.31.105 - - [03/Jul/2025 20:57:26] "GET / HTTP/1.1" 200 -
+2025-07-03 20:57:30,052 - werkzeug - INFO - 192.168.31.105 - - [03/Jul/2025 20:57:30] "GET / HTTP/1.1" 200 -
+2025-07-03 20:57:42,243 - werkzeug - INFO - 127.0.0.1 - - [03/Jul/2025 20:57:42] "GET / HTTP/1.1" 200 -
+2025-07-03 20:57:44,134 - werkzeug - INFO - 127.0.0.1 - - [03/Jul/2025 20:57:44] "GET / HTTP/1.1" 200 -
+2025-07-03 20:57:45,115 - werkzeug - INFO - 127.0.0.1 - - [03/Jul/2025 20:57:45] "GET / HTTP/1.1" 200 -
+2025-07-03 20:57:46,064 - werkzeug - INFO - 127.0.0.1 - - [03/Jul/2025 20:57:46] "GET / HTTP/1.1" 200 -
+2025-07-03 20:57:46,877 - werkzeug - INFO - 127.0.0.1 - - [03/Jul/2025 20:57:46] "GET / HTTP/1.1" 200 -
+2025-07-03 20:57:47,686 - werkzeug - INFO - 127.0.0.1 - - [03/Jul/2025 20:57:47] "GET / HTTP/1.1" 200 -
+2025-07-03 20:57:50,163 - werkzeug - INFO - 127.0.0.1 - - [03/Jul/2025 20:57:50] "GET / HTTP/1.1" 200 -
+2025-07-03 20:58:55,202 - werkzeug - INFO - 127.0.0.1 - - [03/Jul/2025 20:58:55] "GET / HTTP/1.1" 200 -
+2025-07-03 21:10:00,040 - werkzeug - INFO - 127.0.0.1 - - [03/Jul/2025 21:10:00] "GET / HTTP/1.1" 200 -
+2025-07-03 21:10:07,563 - werkzeug - INFO - 127.0.0.1 - - [03/Jul/2025 21:10:07] "GET / HTTP/1.1" 200 -
+2025-07-03 21:11:53,025 - werkzeug - INFO - 127.0.0.1 - - [03/Jul/2025 21:11:53] "GET / HTTP/1.1" 200 -
