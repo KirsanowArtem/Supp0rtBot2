@@ -1769,10 +1769,6 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
                 await update.message.reply_text("Введіть /message, щоб надсилати повідомлення адміністраторам бота.")
             return
 
-        if update.message and update.message.chat.type in [Chat.GROUP, Chat.SUPERGROUP]:
-            print("1111111111111111")
-            return
-
         if update.message.message_thread_id is not None:
             user = update.message.from_user.username
             if not is_programmer(user) and not is_admin(user):
