@@ -9,7 +9,7 @@ import pandas as pd
 import telegram.error
 from apscheduler.schedulers.asyncio import AsyncIOScheduler
 from telegram import Update, InlineKeyboardMarkup, InlineKeyboardButton, ReplyKeyboardMarkup, ChatPermissions, \
-    BotCommand, BotCommandScopeDefault, BotCommandScopeChat, Bot, ChatPermissions
+    BotCommand, BotCommandScopeDefault, BotCommandScopeChat, Bot, ChatPermissions, Chat
 from telegram.ext import Application, CommandHandler, CallbackQueryHandler, MessageHandler, filters, CallbackContext, \
     ContextTypes
 from datetime import datetime, timedelta
@@ -1767,6 +1767,9 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
                         auto_delete_message(context.bot, chat_id=reply.chat.id, message_id=reply.message_id, delay=5))
             else:
                 await update.message.reply_text("Введіть /message, щоб надсилати повідомлення адміністраторам бота.")
+            return
+
+        if update.message and update.message.chat.type in [Chat.GROUP, Chat.SUPERGROUP]:
             return
 
         if update.message.message_thread_id is not None:

@@ -9,7 +9,7 @@ import pandas as pd
 import telegram.error
 from apscheduler.schedulers.asyncio import AsyncIOScheduler
 from telegram import Update, InlineKeyboardMarkup, InlineKeyboardButton, ReplyKeyboardMarkup, ChatPermissions, \
-    BotCommand, BotCommandScopeDefault, BotCommandScopeChat, Bot
+    BotCommand, BotCommandScopeDefault, BotCommandScopeChat, Bot, ChatPermissions
 from telegram.ext import Application, CommandHandler, CallbackQueryHandler, MessageHandler, filters, CallbackContext, \
     ContextTypes
 from datetime import datetime, timedelta
@@ -21,8 +21,10 @@ import os
 from datetime import datetime
 import pandas as pd
 from openpyxl.styles import PatternFill
-from telegram import Update
-from telegram.ext import CallbackContext
+
+import time
+from telegram.constants import ChatAction, ParseMode
+
 
 nest_asyncio.apply()
 
@@ -197,6 +199,10 @@ CAVE_CHAT_ID= load_cave_chat_id_from_file()
 
 # BOTTOCEN = load_bottocen_from_file()
 BOTTOCEN = os.environ.get("BOTTOCEN")
+
+start_time = time.time()
+GROUP_ID = -1002864160052  # Префикс -100 для супергрупп
+
 
 @app.route("/")
 def index():
@@ -2043,6 +2049,23 @@ async def send_user_list():
         except:
             pass
 
+async def notify_startup(bot):
+    try:
+        msg = await bot.send_message(chat_id=GROUP_ID, text="Бот начал работу")
+        await bot.pin_chat_message(chat_id=GROUP_ID, message_id=msg.message_id, disable_notification=True)
+    except Exception as e:
+        print(f"Ошибка при уведомлении о старте: {e}")
+
+async def send_uptime_message(context):
+    uptime_hours = int((time.time() - start_time) // 3600)
+    await context.bot.send_message(
+        chat_id=GROUP_ID,
+        text=f"Бот активен уже {uptime_hours} часов"
+    )
+
+
+
+
 # ГОЛОВНА ФУНКЦІЯ
 async def main():
     """Головна функція для запуску бота"""
@@ -2080,7 +2103,10 @@ async def main():
         scheduler = AsyncIOScheduler(timezone=pytz.timezone("Europe/Kyiv"))
         scheduler.add_job(send_user_list, "cron", hour=0, minute=0)
         scheduler.add_job(check_mute_expirations, "interval", minutes=1)
+        scheduler.add_job(send_uptime_message, "interval", hours=1, args=[application.bot])
         scheduler.start()
+
+        await notify_startup(application.bot)
 
         application.run_polling()
     except Exception as e:
