@@ -171,10 +171,10 @@ def load_allusers_tem_id_from_file():
     data = safe_json_read(DATA_FILE)
     return data.get("allusers_tem_id", 386)  # Значення за замовчуванням 386
 
-def load_cave_chat_id_from_file():
+def load_save_chat_id_from_file():
     """Завантаження ID печерного чату"""
     data = safe_json_read(DATA_FILE)
-    return data.get("cave_chat_id", -1002648725095)  # Значення за замовчуванням -1002648725095
+    return data.get("save_chat_id", -1002648725095)  # Значення за замовчуванням -1002648725095
 
 
 def is_programmer(username):
@@ -194,7 +194,7 @@ application = None
 app = Flask(__name__)
 CREATOR_CHAT_ID = load_chat_id_from_file()  # ID чату для адміністраторів
 ALLUSERS_TEM_ID=load_allusers_tem_id_from_file()
-CAVE_CHAT_ID= load_cave_chat_id_from_file()
+SAVE_CHAT_ID= load_save_chat_id_from_file()
 
 
 # BOTTOCEN = load_bottocen_from_file()
@@ -335,7 +335,7 @@ async def export_to_excel():
                     "bot_token": data.get("bot_token", ""),
                     "owner_id": data.get("owner_id", ""),
                     "chat_id": data.get("chat_id", ""),
-                    "cave_chat_id": data.get("cave_chat_id", "-1002648725095"),
+                    "save_chat_id": data.get("save_chat_id", "-1002648725095"),
                     "allusers_tem_id": data.get("allusers_tem_id", 386),
                     "total_score": data.get("total_score", 0),
                     "num_of_ratings": data.get("num_of_ratings", 0)
@@ -415,7 +415,7 @@ async def import_from_excel(file_path):
             "bot_token": data.get("bot_token", ""),
             "owner_id": data.get("owner_id", ""),
             "chat_id": data.get("chat_id", ""),
-            "cave_chat_id": data.get("cave_chat_id", "-1002648725095"),
+            "save_chat_id": data.get("save_chat_id", "-1002648725095"),
             "allusers_tem_id": data.get("allusers_tem_id", 386),
             "total_score": data.get("total_score", 0),
             "num_of_ratings": data.get("num_of_ratings", 0),
@@ -440,7 +440,7 @@ async def import_from_excel(file_path):
                     if len(headers) >= 3 and row[2]:
                         new_data["chat_id"] = str(row[2])
                     if len(headers) >= 4 and row[3]:
-                        new_data["cave_chat_id"] = str(row[3])
+                        new_data["save_chat_id"] = str(row[3])
                     if len(headers) >= 5 and row[4] is not None:
                         new_data["allusers_tem_id"] = int(row[4])
                     if len(headers) >= 6 and row[5] is not None:
@@ -1544,21 +1544,24 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
         ):
             return
 
-        if context.user_data.get("awaiting_file"):
-            if update.message.document:
-                file = await update.message.document.get_file()
-                await file.download_to_drive("temp_import.xlsx")
+        if update.message.chat.type in ["group", "supergroup"]:
+            chat_id = update.message.chat.id
 
-                if await import_from_excel("temp_import.xlsx"):
-                    await update.message.reply_text("Дані успішно імпортовано!")
-                else:
-                    await update.message.reply_text("Помилка при імпорті даних")
+            if chat_id == SAVE_CHAT_ID:
+                if context.user_data.get("awaiting_file") and update.message.document:
+                    file = await update.message.document.get_file()
+                    await file.download_to_drive("temp_import.xlsx")
 
-                context.user_data["awaiting_file"] = False
-                try:
-                    os.remove("temp_import.xlsx")
-                except:
-                    pass
+                    if await import_from_excel("temp_import.xlsx"):
+                        await update.message.reply_text("Дані успішно імпортовано!")
+                    else:
+                        await update.message.reply_text("Помилка при імпорті даних")
+
+                    context.user_data["awaiting_file"] = False
+                    try:
+                        os.remove("temp_import.xlsx")
+                    except:
+                        pass
                 return
 
         if update.message.message_thread_id == ALLUSERS_TEM_ID and is_programmer(update.message.from_user.username):
@@ -2036,7 +2039,7 @@ async def set_save_commands(application):
         BotCommand("get_logs", "Отримати логи"),
         BotCommand("help", "Показати доступні команди"),
     ]
-    await application.bot.set_my_commands(commands, scope=BotCommandScopeChat(chat_id=CAVE_CHAT_ID))
+    await application.bot.set_my_commands(commands, scope=BotCommandScopeChat(chat_id=SAVE_CHAT_ID))
 
 async def send_user_list():
     """Автоматична відправка Excel файлу з користувачами"""
@@ -2047,7 +2050,7 @@ async def send_user_list():
             with open(excel_filename, "rb") as file:
                 filename_to_send = os.path.basename(excel_filename)
                 await bot.send_document(
-                    chat_id=CAVE_CHAT_ID,
+                    chat_id=SAVE_CHAT_ID,
                     document=file,
                     filename=filename_to_send
                 )
@@ -2059,7 +2062,7 @@ async def send_user_list():
         print(f"Помилка при відправці списку користувачів: {e}")
         try:
             bot = Bot(token=BOTTOCEN)
-            await bot.send_message(chat_id=CAVE_CHAT_ID, text=f"Помилка при створенні звіту: {e}")
+            await bot.send_message(chat_id=SAVE_CHAT_ID, text=f"Помилка при створенні звіту: {e}")
         except:
             pass
 
