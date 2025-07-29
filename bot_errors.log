@@ -416,3 +416,43 @@ telegram.error.TimedOut: Timed out
 2025-07-03 21:10:00,040 - werkzeug - INFO - 127.0.0.1 - - [03/Jul/2025 21:10:00] "GET / HTTP/1.1" 200 -
 2025-07-03 21:10:07,563 - werkzeug - INFO - 127.0.0.1 - - [03/Jul/2025 21:10:07] "GET / HTTP/1.1" 200 -
 2025-07-03 21:11:53,025 - werkzeug - INFO - 127.0.0.1 - - [03/Jul/2025 21:11:53] "GET / HTTP/1.1" 200 -
+2025-07-29 16:31:59,812 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.31.10:5000
+2025-07-29 16:31:59,812 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-07-29 16:33:30,115 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.31.10:5000
+2025-07-29 16:33:30,115 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-07-29 16:35:25,622 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.31.10:5000
+2025-07-29 16:35:25,622 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-07-29 16:37:11,634 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.31.10:5000
+2025-07-29 16:37:11,634 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-07-29 16:42:12,308 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.31.10:5000
+2025-07-29 16:42:12,308 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-07-29 16:42:54,025 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.31.10:5000
+2025-07-29 16:42:54,026 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-07-29 16:45:44,661 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.31.10:5000
+2025-07-29 16:45:44,661 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-07-29 16:47:21,251 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.31.10:5000
+2025-07-29 16:47:21,251 - werkzeug - INFO - [33mPress CTRL+C to quit[0m

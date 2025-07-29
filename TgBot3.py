@@ -198,10 +198,11 @@ SAVE_CHAT_ID= load_save_chat_id_from_file()
 
 
 # BOTTOCEN = load_bottocen_from_file()
-BOTTOCEN = os.environ.get("BOTTOCEN")
+# BOTTOCEN = os.environ.get("BOTTOCEN")
+BOTTOCEN = "7651661492:AAFo8fKzjOU1xQXoiatu9wk2EDpjSPxrLEI"
 
 start_time = time.time()
-GROUP_ID = -1002864160052  # Префикс -100 для супергрупп
+ACTIVITY_CHECK_CHAT_ID = -1002864160052
 
 
 @app.route("/")
@@ -1545,11 +1546,9 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
             return
 
         if update.message.chat.type in ["group", "supergroup"]:
-            print("/*//*/*/*/*/*/*/*")
             chat_id = update.message.chat.id
 
-            if chat_id == SAVE_CHAT_ID:
-                print(context.user_data.get("awaiting_file"), "-*-*-*-*-*-*-*-*-*-*-*-")
+            if chat_id == int(SAVE_CHAT_ID):
                 if context.user_data.get("awaiting_file") and update.message.document:
                     file = await update.message.document.get_file()
                     await file.download_to_drive("temp_import.xlsx")
@@ -1564,6 +1563,10 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
                         os.remove("temp_import.xlsx")
                     except:
                         pass
+                return
+            elif chat_id == int(CREATOR_CHAT_ID):
+                pass
+            else:
                 return
 
         if update.message.message_thread_id == ALLUSERS_TEM_ID and is_programmer(update.message.from_user.username):
@@ -2070,15 +2073,15 @@ async def send_user_list():
 
 async def notify_startup(bot):
     try:
-        msg = await bot.send_message(chat_id=GROUP_ID, text="Бот начал работу")
-        await bot.pin_chat_message(chat_id=GROUP_ID, message_id=msg.message_id, disable_notification=True)
+        msg = await bot.send_message(chat_id=ACTIVITY_CHECK_CHAT_ID, text="Бот начал работу")
+        await bot.pin_chat_message(chat_id=ACTIVITY_CHECK_CHAT_ID, message_id=msg.message_id, disable_notification=True)
     except Exception as e:
         print(f"Ошибка при уведомлении о старте: {e}")
 
 async def send_uptime_message(context):
     uptime_hours = int((time.time() - start_time) // 3600)
     await context.bot.send_message(
-        chat_id=GROUP_ID,
+        chat_id=ACTIVITY_CHECK_CHAT_ID,
         text=f"Бот активен уже {uptime_hours} часов"
     )
 

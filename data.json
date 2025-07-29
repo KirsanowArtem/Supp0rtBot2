@@ -5,10 +5,9 @@
             "username": "ArtemKirss",
             "first_name": "Артем",
             "join_date": "10:47; 19/05/2025",
-            "rating": 5,
+            "rating": 4,
             "mute/ban": false,
-            "mute/ban_end": null,
-            "reason": null
+            "mute/ban_end": null
         },
         {
             "id": "6222116355",
@@ -17,8 +16,7 @@
             "join_date": "11:31; 19/05/2025",
             "rating": 5,
             "mute/ban": true,
-            "mute/ban_end": "10:03; 05/03/2659",
-            "reason": "так нужно"
+            "mute/ban_end": "10:03; 05/03/2659"
         },
         {
             "id": "7409942168",
@@ -27,8 +25,7 @@
             "join_date": "11:32; 19/05/2025",
             "rating": 5,
             "mute/ban": false,
-            "mute/ban_end": null,
-            "reason": null
+            "mute/ban_end": null
         },
         {
             "id": "698846573",
@@ -37,8 +34,7 @@
             "join_date": "11:36; 19/05/2025",
             "rating": 5,
             "mute/ban": false,
-            "mute/ban_end": null,
-            "reason": null
+            "mute/ban_end": null
         },
         {
             "id": "5708855619",
@@ -47,8 +43,7 @@
             "join_date": "13:58; 19/05/2025",
             "rating": 5,
             "mute/ban": true,
-            "mute/ban_end": "Назавжди (бан)",
-            "reason": null
+            "mute/ban_end": "Назавжди (бан)"
         },
         {
             "id": "2133347662",
@@ -57,8 +52,7 @@
             "join_date": "15:03; 19/05/2025",
             "rating": 5,
             "mute/ban": false,
-            "mute/ban_end": null,
-            "reason": null
+            "mute/ban_end": null
         },
         {
             "id": "1681126166",
@@ -67,20 +61,19 @@
             "join_date": "15:27; 19/05/2025",
             "rating": 5,
             "mute/ban": false,
-            "mute/ban_end": null,
-            "reason": null
+            "mute/ban_end": null
         }
     ],
     "muted_users": {
         "6222116355": {
-            "expiration": "10:03; 05/03/2659",
+            "expiration": null,
             "reason": "так нужно"
         }
     },
     "banned_users": {
         "5708855619": {
             "reason": "За рішенням адміністрації",
-            "date": "22:28; 25/05/2025"
+            "date": "16:37; 29/07/2025"
         }
     },
     "admins": [
@@ -116,9 +109,20 @@
         "559": "1840233118",
         "595": "1840233118",
         "596": "1840233118",
-        "612": 2133347662,
-        "613": 2133347662,
-        "632": 2133347662
+        "612": "2133347662",
+        "613": "2133347662",
+        "632": "2133347662",
+        "677": "1840233118",
+        "678": "1840233118",
+        "681": "1840233118",
+        "686": "1840233118",
+        "687": "1840233118",
+        "688": "1840233118",
+        "689": "1840233118",
+        "699": 1840233118,
+        "700": 1840233118,
+        "703": 1840233118,
+        "715": 1840233118
     },
     "topics": {
         "1840233118": 408,
