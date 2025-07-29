@@ -1545,6 +1545,7 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
             return
 
         if update.message.chat.type in ["group", "supergroup"]:
+            print("/*//*/*/*/*/*/*/*")
             chat_id = update.message.chat.id
 
             if chat_id == SAVE_CHAT_ID:
