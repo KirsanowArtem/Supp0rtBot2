@@ -1530,6 +1530,20 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
         muted_users = load_muted_users_from_file()
         data = safe_json_read(DATA_FILE)
 
+        # Игнорируем системные сообщения
+        if (
+                update.message.pinned_message or
+                update.message.new_chat_members or
+                update.message.left_chat_member or
+                update.message.delete_chat_photo or
+                update.message.group_chat_created or
+                update.message.supergroup_chat_created or
+                update.message.channel_chat_created or
+                update.message.migrate_to_chat_id or
+                update.message.migrate_from_chat_id
+        ):
+            return
+
         if context.user_data.get("awaiting_file"):
             if update.message.document:
                 file = await update.message.document.get_file()
