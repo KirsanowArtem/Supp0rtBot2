@@ -198,8 +198,7 @@ SAVE_CHAT_ID= load_save_chat_id_from_file()
 
 
 # BOTTOCEN = load_bottocen_from_file()
-# BOTTOCEN = os.environ.get("BOTTOCEN")
-BOTTOCEN = "7651661492:AAFo8fKzjOU1xQXoiatu9wk2EDpjSPxrLEI"
+BOTTOCEN = os.environ.get("BOTTOCEN")
 
 start_time = time.time()
 ACTIVITY_CHECK_CHAT_ID = -1002864160052
@@ -2078,12 +2077,17 @@ async def notify_startup(bot):
     except Exception as e:
         print(f"Ошибка при уведомлении о старте: {e}")
 
-async def send_uptime_message(context):
-    uptime_hours = int((time.time() - start_time) // 3600)
-    await context.bot.send_message(
-        chat_id=ACTIVITY_CHECK_CHAT_ID,
-        text=f"Бот активен уже {uptime_hours} часов"
-    )
+async def send_uptime_message(bot):
+    try:
+        uptime_hours = int((time.time() - start_time) // 3600)
+        await bot.send_message(
+            chat_id=ACTIVITY_CHECK_CHAT_ID,
+            text=f"Бот активен уже {uptime_hours} часов"
+        )
+    except Exception as e:
+        print(f"Ошибка в send_uptime_message: {e}")
+
+
 
 
 
