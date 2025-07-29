@@ -203,8 +203,8 @@ def index():
     return "@Supp0rtsBot2"
 
 def run_flask():
-    port = int(os.environ.get("PORT", 5000))
-    app.run(host="0.0.0.0", port=port)
+    app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))
+
 
 # ФУНКЦІЇ ДЛЯ РОБОТИ З EXCEL
 async def export_to_excel():
