@@ -1770,6 +1770,7 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
             return
 
         if update.message and update.message.chat.type in [Chat.GROUP, Chat.SUPERGROUP]:
+            print("1111111111111111")
             return
 
         if update.message.message_thread_id is not None:
