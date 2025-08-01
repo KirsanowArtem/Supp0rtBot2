@@ -21,7 +21,7 @@ import os
 from datetime import datetime
 import pandas as pd
 from openpyxl.styles import PatternFill
-
+import requests
 import time
 from telegram.constants import ChatAction, ParseMode
 
@@ -35,9 +35,16 @@ logging.basicConfig(
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
 )
 
+JSONBIN_API_KEY = "$2a$10$VuyaTmVfoWEScIseUCpUkOX5bccOUPSQlbnCi8xlx7s1CMGWzeztu"
+BIN_ID = "688c4fc2ae596e708fbf3212"
+BASE_URL = f"https://api.jsonbin.io/v3/b/{BIN_ID}"
+HEADERS = {
+    "Content-Type": "application/json",
+    "X-Master-Key": JSONBIN_API_KEY
+}
+
 # ФУНКЦІЇ ДЛЯ РОБОТИ З JSON
-def safe_json_read(file_path):
-    """Безпечне читання JSON файлу з даними"""
+def safe_json_read(n):
     default_data = {
         "users": [],
         "muted_users": {},
@@ -54,56 +61,30 @@ def safe_json_read(file_path):
         "user_topics": {}
     }
 
-    if not os.path.exists(file_path):
-        safe_json_write(default_data, file_path)
-        return default_data
-
     try:
-        for encoding in ['utf-8-sig', 'utf-8', 'cp1251']:
-            try:
-                with open(file_path, 'r', encoding=encoding) as f:
-                    data = json.load(f)
-                    for key in default_data.keys():
-                        if key not in data:
-                            data[key] = default_data[key]
-                    return data
-            except UnicodeDecodeError:
-                continue
-            except json.JSONDecodeError as je:
-                print(f"Invalid JSON in {file_path}: {je}")
-                continue
+        response = requests.get(BASE_URL + "/latest", headers=HEADERS)
+        response.raise_for_status()
+        data = response.json()['record']
 
-        print("All encoding attempts failed, creating new file")
-        safe_json_write(default_data, file_path)
-        return default_data
+        # Убедимся, что все ключи есть
+        for key in default_data:
+            if key not in data:
+                data[key] = default_data[key]
+        return data
     except Exception as e:
-        print(f"Critical read error: {e}")
-        safe_json_write(default_data, file_path)
+        print(f"Ошибка чтения из JSONBin: {e}")
         return default_data
 
-def safe_json_write(data, file_path):
-    """Безпечний запис даних у JSON файл"""
-    temp_file = file_path + '.tmp'
+
+def safe_json_write(data,n):
     try:
-        with open(temp_file, 'w', encoding='utf-8') as f:
-            json.dump(data, f, ensure_ascii=False, indent=4)
-
-        with open(temp_file, 'r', encoding='utf-8') as f:
-            json.load(f)
-
-        if os.path.exists(file_path):
-            os.replace(temp_file, file_path)
-        else:
-            os.rename(temp_file, file_path)
+        response = requests.put(BASE_URL, headers=HEADERS, data=json.dumps(data, ensure_ascii=False))
+        response.raise_for_status()
         return True
     except Exception as e:
-        print(f"Write failed: {e}")
-        try:
-            if os.path.exists(temp_file):
-                os.remove(temp_file)
-        except:
-            pass
+        print(f"Ошибка записи в JSONBin: {e}")
         return False
+
 
 # ДОПОМІЖНІ ФУНКЦІЇ
 def get_current_time_kiev():
@@ -197,11 +178,15 @@ ALLUSERS_TEM_ID=load_allusers_tem_id_from_file()
 SAVE_CHAT_ID= load_save_chat_id_from_file()
 
 
+
 # BOTTOCEN = load_bottocen_from_file()
 BOTTOCEN = os.environ.get("BOTTOCEN")
 
+
+
 start_time = time.time()
 ACTIVITY_CHECK_CHAT_ID = -1002864160052
+
 
 
 @app.route("/")
@@ -218,7 +203,7 @@ async def export_to_excel():
     try:
         data = safe_json_read(DATA_FILE)
         current_time = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
-        excel_filename = f"SupportBot_{current_time}.xlsx"
+        excel_filename = f"Exel_SupportBot_{current_time}.xlsx"
 
         # Create DataFrame and ensure unique index
         all_users_df = pd.DataFrame(data["users"]).reset_index(drop=True)
@@ -754,8 +739,8 @@ async def help(update: Update, context):
                 "/deleteadmin <користувач> - Видалити адміністратора.\n"
                 "/programier <користувач> - Додати програміста.\n"
                 "/deleteprogramier <користувач> - Видалити програміста.\n"
-                "/get_alllist - Отримати Excel файл з користувачами.\n"
-                "/set_alllist - Записати Excel файл з користувачами.\n"
+                "/get_exel - Отримати Excel файл з користувачами.\n"
+                "/set_exel - Записати Excel файл з користувачами.\n"
             )
         else:
             help_text = (
@@ -1434,8 +1419,8 @@ async def alllist(update: Update, context: CallbackContext):
         await update.message.reply_text("Сталася помилка при обробці команди.")
 
 
-async def get_alllist(update: Update, context: CallbackContext):
-    """Обробка команди /get_alllist з покращеною обробкою помилок"""
+async def get_exel(update: Update, context: CallbackContext):
+    """Обробка команди /get_exel з покращеною обробкою помилок"""
     try:
         # Відправляємо повідомлення про початок створення звіту
         processing_msg = await update.message.reply_text("⏳ Створення звіту...")
@@ -1455,7 +1440,7 @@ async def get_alllist(update: Update, context: CallbackContext):
                     await update.message.reply_document(
                         document=file,
                         filename=os.path.basename(excel_filename),
-                        caption="📊 Звіт успішно створено"
+                        caption="📊 Exel файл успішно створено"
                     )
             except Exception as e:
                 logging.error(f"Помилка при відправці файлу: {str(e)}")
@@ -1479,7 +1464,7 @@ async def get_alllist(update: Update, context: CallbackContext):
             )
 
     except Exception as e:
-        logging.error(f"Помилка в get_alllist: {str(e)}", exc_info=True)
+        logging.error(f"Помилка в get_exel: {str(e)}", exc_info=True)
         try:
             await update.message.reply_text(
                 "⚠️ Сталася критична помилка. Будь ласка, спробуйте ще раз пізніше."
@@ -1487,16 +1472,44 @@ async def get_alllist(update: Update, context: CallbackContext):
         except:
             pass
 
-async def set_alllist(update: Update, context: CallbackContext) -> None:
-    """Обробка команди /set_alllist - імпорт даних з Excel файлу"""
+async def set_exel(update: Update, context: CallbackContext) -> None:
+    """Обробка команди /set_exel - імпорт даних з Excel файлу"""
     try:
         user = update.message.from_user.username
 
         await update.message.reply_text("Будь ласка, надішліть Excel-файл з даними.")
-        context.user_data["awaiting_file"] = True
+        context.user_data["awaiting_exel"] = True
     except Exception as e:
-        print(f"Помилка в set_alllist: {e}")
+        print(f"Помилка в set_exel: {e}")
         await update.message.reply_text("Сталася помилка")
+
+async def get_json(update: Update, context: CallbackContext):
+    """Отправка JSON-файла из базы"""
+    try:
+        data = safe_json_read(DATA_FILE)
+        current_time = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
+        filename = f"Json_SupportBot_{current_time}.json"
+
+        with open(filename, "w", encoding="utf-8") as f:
+            json.dump(data, f, ensure_ascii=False, indent=2)
+
+        with open(filename, "rb") as file:
+            await update.message.reply_document(
+                document=file,
+                filename=filename,
+                caption=f"📊 Json файл успішно створено"
+            )
+        os.remove(filename)
+    except Exception as e:
+        await update.message.reply_text(f"❌ Помилка при відправці JSON: {e}")
+
+async def set_json(update: Update, context: CallbackContext):
+    """Приём и сохранение нового JSON-файла"""
+    try:
+        await update.message.reply_text("Будь ласка, надішліть JSON-файл.")
+        context.user_data["awaiting_json"] = True
+    except Exception as e:
+        await update.message.reply_text(f"❌ Помилка при підготовці до прийому JSON: {e}")
 
 async def get_logs(update: Update, context: CallbackContext):
     """Обробка команди /get_logs - отримання логів"""
@@ -1548,21 +1561,43 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
             chat_id = update.message.chat.id
 
             if chat_id == int(SAVE_CHAT_ID):
-                if context.user_data.get("awaiting_file") and update.message.document:
+                if context.user_data.get("awaiting_exel") and update.message.document:
                     file = await update.message.document.get_file()
                     await file.download_to_drive("temp_import.xlsx")
 
                     if await import_from_excel("temp_import.xlsx"):
-                        await update.message.reply_text("Дані успішно імпортовано!")
+                        await update.message.reply_text("✅ EXEL файл успішно завантажено.")
                     else:
                         await update.message.reply_text("Помилка при імпорті даних")
 
-                    context.user_data["awaiting_file"] = False
+                    context.user_data["awaiting_exel"] = False
                     try:
                         os.remove("temp_import.xlsx")
                     except:
                         pass
-                return
+                elif context.user_data.get("awaiting_json") and update.message.document:
+                    file = await update.message.document.get_file()
+                    await file.download_to_drive("temp_import.json")
+
+                    try:
+                        with open("temp_import.json", "r", encoding="utf-8") as f:
+                            imported_data = json.load(f)
+                            if safe_json_write(imported_data, DATA_FILE):
+                                await update.message.reply_text("✅ JSON файл успішно завантажено.")
+                                return
+                            else:
+                                await update.message.reply_text("❌ Помилка при збереженні JSON.")
+                    except Exception as e:
+                        await update.message.reply_text(f"❌ Помилка при імпорті JSON: {e}")
+
+                    context.user_data["awaiting_json"] = False
+                    try:
+                        os.remove("temp_import.json")
+                    except:
+                        pass
+                    return
+                else:
+                    return
             elif chat_id == int(CREATOR_CHAT_ID):
                 pass
             else:
@@ -2028,8 +2063,8 @@ async def set_creator_commands(application):
             BotCommand("fromus", "Інформація про створювача"),
             BotCommand("help", "Показати доступні команди"),
             BotCommand("info", "Показати інформацію про програмістів та адміністраторів"),
-            BotCommand("get_alllist", "Отримати Excel файл з користувачами"),
-            BotCommand("set_alllist", "Записати Excel файл з користувачами"),
+            BotCommand("get_exel", "Отримати Excel файл з користувачами"),
+            BotCommand("set_exel", "Записати Excel файл з користувачами"),
         ]
         await application.bot.set_my_commands(commands, scope=BotCommandScopeChat(chat_id=CREATOR_CHAT_ID))
     except Exception as e:
@@ -2038,14 +2073,16 @@ async def set_creator_commands(application):
 async def set_save_commands(application):
     """Встановлення команд для адміністраторів"""
     commands = [
-        BotCommand("get_alllist", "Отримати Exel файл з користувачами"),
-        BotCommand("set_alllist", "Записати Exel файл з користувачами"),
+        BotCommand("get_exel", "Отримати Exel файл"),
+        BotCommand("set_exel", "Записати Exel файл"),
+        BotCommand("get_json", "Отримати Json файл"),
+        BotCommand("set_json", "Записати Json файл"),
         BotCommand("get_logs", "Отримати логи"),
         BotCommand("help", "Показати доступні команди"),
     ]
     await application.bot.set_my_commands(commands, scope=BotCommandScopeChat(chat_id=SAVE_CHAT_ID))
 
-async def send_user_list():
+async def send_user_exel():
     """Автоматична відправка Excel файлу з користувачами"""
     try:
         excel_filename = await export_to_excel()
@@ -2069,6 +2106,38 @@ async def send_user_list():
             await bot.send_message(chat_id=SAVE_CHAT_ID, text=f"Помилка при створенні звіту: {e}")
         except:
             pass
+
+async def send_json_file():
+    """Автоматична відправка JSON-файлу з даними"""
+    try:
+        data = safe_json_read(DATA_FILE)
+        current_time = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
+        json_filename = f"Json_SupportBot_{current_time}.json"
+
+        with open(json_filename, "w", encoding="utf-8") as f:
+            json.dump(data, f, ensure_ascii=False, indent=2)
+
+        bot = Bot(token=BOTTOCEN)
+        with open(json_filename, "rb") as file:
+            await bot.send_document(
+                chat_id=SAVE_CHAT_ID,
+                document=file,
+                filename=json_filename
+            )
+
+        try:
+            os.remove(json_filename)
+        except Exception as e:
+            print(f"Помилка при видаленні JSON: {e}")
+
+    except Exception as e:
+        print(f"Помилка при відправці JSON: {e}")
+        try:
+            bot = Bot(token=BOTTOCEN)
+            await bot.send_message(chat_id=SAVE_CHAT_ID, text=f"Помилка при створенні JSON: {e}")
+        except:
+            pass
+
 
 async def notify_startup(bot):
     try:
@@ -2115,8 +2184,11 @@ async def main():
         application.add_handler(CommandHandler("programier", programier))
         application.add_handler(CommandHandler("deleteprogramier", deleteprogramier))
         application.add_handler(CommandHandler("info", info))
-        application.add_handler(CommandHandler("get_alllist", get_alllist))
-        application.add_handler(CommandHandler("set_alllist", set_alllist))
+        application.add_handler(CommandHandler("get_exel", get_exel))
+        application.add_handler(CommandHandler("set_exel", set_exel))
+        application.add_handler(CommandHandler("get_json", get_json))
+        application.add_handler(CommandHandler("set_json", set_json))
+
         application.add_handler(CommandHandler("get_logs", get_logs))
 
         application.add_handler(CallbackQueryHandler(button_callback))
@@ -2127,7 +2199,8 @@ async def main():
         await set_save_commands(application)
 
         scheduler = AsyncIOScheduler(timezone=pytz.timezone("Europe/Kyiv"))
-        scheduler.add_job(send_user_list, "cron", hour=0, minute=0)
+        scheduler.add_job(send_user_exel, "cron", hour=0, minute=0)
+        scheduler.add_job(send_json_file, "cron", hour=0, minute=0)
         scheduler.add_job(check_mute_expirations, "interval", minutes=1)
         scheduler.add_job(send_uptime_message, "interval", hours=1, args=[application.bot])
         scheduler.start()

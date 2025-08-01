@@ -3224,3 +3224,78 @@ Traceback (most recent call last):
   File "C:\Users\Skeleton\PycharmProjects\Supp0rtBot\.venv\Lib\site-packages\telegram\request\_baserequest.py", line 385, in _request_wrapper
     raise Conflict(message)
 telegram.error.Conflict: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-08-01 08:10:15,874 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.31.10:5000
+2025-08-01 08:10:15,874 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-08-01 08:11:43,386 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.31.10:5000
+2025-08-01 08:11:43,386 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-08-01 08:12:49,377 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.31.10:5000
+2025-08-01 08:12:49,378 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-08-01 08:35:11,483 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.31.10:5000
+2025-08-01 08:35:11,483 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-08-01 08:38:07,432 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.31.10:5000
+2025-08-01 08:38:07,432 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-08-01 08:39:50,701 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.31.10:5000
+2025-08-01 08:39:50,701 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-08-01 19:10:27,080 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.31.10:5000
+2025-08-01 19:10:27,080 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-08-01 23:00:13,971 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.31.10:5000
+2025-08-01 23:00:13,971 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-08-01 23:04:41,081 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.31.10:5000
+2025-08-01 23:04:41,081 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-08-01 23:08:36,488 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.31.10:5000
+2025-08-01 23:08:36,488 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-08-01 23:15:53,975 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.31.10:5000
+2025-08-01 23:15:53,976 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-08-01 23:20:37,692 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.31.10:5000
+2025-08-01 23:20:37,692 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-08-01 23:27:38,295 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.31.10:5000
+2025-08-01 23:27:38,295 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-08-01 23:29:15,985 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.31.10:5000
+2025-08-01 23:29:15,986 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-08-01 23:42:02,642 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.31.10:5000
+2025-08-01 23:42:02,643 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
